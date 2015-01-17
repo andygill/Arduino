@@ -52,6 +52,12 @@ void go(int lhs,int rhs) {
 void loop() 
 {  
   go(50,50);
-  delay(10000);
+  delay(1000);
+  go(-50,50);
+  delay(500);
+  go(50,50);
+  delay(1000);
+  go(50,-50);
+  delay(500);
 }
 
