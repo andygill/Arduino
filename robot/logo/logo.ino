@@ -41,23 +41,15 @@ void go(int lhs,int rhs) {
   rhs = min(max(rhs,-MAX_SPEED),MAX_SPEED); // was lhs, bug found by Kay Gill
   rhs = rhs * 65;
   rhs = rhs / 50; // for different moters
-  if (lhs != 0) lhs = 256 - lhs;
-  if (rhs != 0) rhs = 256 - rhs;
   line_following.dc_write(DC_CMD_DIRA, lhs>=0 ? FW : BW);
   line_following.dc_write(DC_CMD_DIRB, rhs>=0 ? FW : BW);
-  line_following.dc_write(DC_CMD_PWMA, abs(lhs));
-  line_following.dc_write(DC_CMD_PWMB, abs(rhs));
+  line_following.dc_write(DC_CMD_PWMA, lhs == 0 ? 0 : 256 - abs(lhs));
+  line_following.dc_write(DC_CMD_PWMB, rhs == 0 ? 0 : 256 - abs(rhs));
 }
 
 void loop() 
 {  
-  go(50,50);
-  delay(1000);
   go(-50,50);
-  delay(500);
-  go(50,50);
   delay(1000);
-  go(50,-50);
-  delay(500);
 }
 
