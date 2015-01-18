@@ -35,21 +35,34 @@ void setup()
 // **************************************************************************
 // *                            Main Loop 
 // **************************************************************************
-void go(int lhs,int rhs) {
+void go(int lhs,int rhs,int wait) {
   int MAX_SPEED = 100;
   lhs = min(max(lhs,-MAX_SPEED),MAX_SPEED);
   rhs = min(max(rhs,-MAX_SPEED),MAX_SPEED); // was lhs, bug found by Kay Gill
   rhs = rhs * 65;
   rhs = rhs / 50; // for different moters
+  line_following.dc_write(DC_CMD_PWMA, 0);
+  line_following.dc_write(DC_CMD_PWMB, 0);
   line_following.dc_write(DC_CMD_DIRA, lhs>=0 ? FW : BW);
   line_following.dc_write(DC_CMD_DIRB, rhs>=0 ? FW : BW);
   line_following.dc_write(DC_CMD_PWMA, lhs == 0 ? 0 : 256 - abs(lhs));
   line_following.dc_write(DC_CMD_PWMB, rhs == 0 ? 0 : 256 - abs(rhs));
+  delay(wait);
+}
+
+void forward(int sz) {
+  go(100,100,sz); 
 }
 
 void loop() 
 {  
-  go(-50,50);
-  delay(1000);
+   forward(2000);
+/*
+  go(50,50,1000);
+  go(-50,50,1000);
+  go(-50,50,1000);
+  go(150,150,1000);
+*/  
+  go(0,0,60000);
 }
 
