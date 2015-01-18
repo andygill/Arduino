@@ -53,6 +53,9 @@ void go(int lhs,int rhs,int wait) {
 void forward(int sz) {
   go(100,100,sz); 
 }
+void backward(int sz) {
+  go(-100,-100,sz); 
+}
 
 void loop() 
 {  
