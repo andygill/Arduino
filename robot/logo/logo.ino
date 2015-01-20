@@ -52,10 +52,12 @@ void dc_write(byte type, byte value) {
   }
   // Abort if ix == 4?
 
-  if (values[ix] != value) {
+  if (ix == 4 || values[ix] != value) {
     line_following.dc_write(type,value);
   }
-  values[ix] = value;
+  if (ix != 4) { 
+    values[ix] = value;
+  }
 }  
 
 void dc_write_init() {
