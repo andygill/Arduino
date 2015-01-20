@@ -35,18 +35,48 @@ void setup()
 // **************************************************************************
 // *                            Main Loop 
 // **************************************************************************
+
+void dc_write_init() {
+  dc_write(-DC_CMD_DIRA, FW);
+  dc_write(-DC_CMD_PWMA, 0);
+  dc_write(-DC_CMD_DIRB, FW);
+  dc_write(-DC_CMD_PWMB, 0);
+}
+
+void dc_write(byte type, byte value) {
+  static int types[] = { DC_CMD_DIRA, DC_CMD_DIRB, DC_CMD_PWMA, DC_CMD_PWMB };
+  static int values[] = { 0, 0, 0, 0 };
+
+  int go = type < 0; // always go for -ve type'
+  type = abs(type);
+
+  int ix;
+  for(ix = 0;ix < 4;ix++) {
+    if (type == types[ix]) {
+      break; 
+    }
+  }
+  // Abort if ix == 4?
+
+  if (values[ix] != value) {
+    go = true;
+  }  
+  if (go == true) {
+    line_following.dc_write(type,value);
+  }
+  values[ix] = value;
+}  
+
 void go(int lhs,int rhs,int wait) {
   int MAX_SPEED = 100;
   lhs = min(max(lhs,-MAX_SPEED),MAX_SPEED);
   rhs = min(max(rhs,-MAX_SPEED),MAX_SPEED); // was lhs, bug found by Kay Gill
   rhs = rhs * 65;
   rhs = rhs / 50; // for different moters
-  line_following.dc_write(DC_CMD_PWMA, 0);
-  line_following.dc_write(DC_CMD_PWMB, 0);
-  line_following.dc_write(DC_CMD_DIRA, lhs>=0 ? FW : BW);
-  line_following.dc_write(DC_CMD_DIRB, rhs>=0 ? FW : BW);
-  line_following.dc_write(DC_CMD_PWMA, lhs == 0 ? 0 : 256 - abs(lhs));
-  line_following.dc_write(DC_CMD_PWMB, rhs == 0 ? 0 : 256 - abs(rhs));
+  dc_write(DC_CMD_DIRA, lhs>=0 ? FW : BW);
+  dc_write(DC_CMD_PWMA, lhs == 0 ? 0 : 256 - abs(lhs));
+  dc_write(DC_CMD_DIRB, rhs>=0 ? FW : BW);
+  dc_write(DC_CMD_PWMB, rhs == 0 ? 0 : 256 - abs(rhs));
   delay(wait);
 }
 
@@ -59,13 +89,18 @@ void backward(int sz) {
 
 void loop() 
 {  
-   forward(2000);
-/*
-  go(50,50,1000);
-  go(-50,50,1000);
-  go(-50,50,1000);
-  go(150,150,1000);
-*/  
-  go(0,0,60000);
+  // flower
+  /*
+  forward(1000);
+  go(-100,100,200);
+  backward(1000);
+  go(0,0,1000);
+  */
+ /*
+  go(0,50,500);
+  forward(200);
+  go(60,0,100);
+  */
+  
 }
 
