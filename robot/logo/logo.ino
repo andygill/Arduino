@@ -22,6 +22,8 @@
 
 #include <MakeItRobotics.h>//include library
 MakeItRobotics line_following;//declare object
+
+void dc_write_init();
 // **************************************************************************
 // *                            Power Up Initial
 // **************************************************************************
@@ -31,24 +33,16 @@ void setup()
   delay(500);                              //delay 500ms
   line_following.line_following_setup();   //initialize the status of line following robot
   line_following.all_stop();               //all motors stop
+  dc_write_init(); // Our version of all motors stop
 }
 // **************************************************************************
 // *                            Main Loop 
 // **************************************************************************
 
-void dc_write_init() {
-  dc_write(-DC_CMD_DIRA, FW);
-  dc_write(-DC_CMD_PWMA, 0);
-  dc_write(-DC_CMD_DIRB, FW);
-  dc_write(-DC_CMD_PWMB, 0);
-}
 
 void dc_write(byte type, byte value) {
   static int types[] = { DC_CMD_DIRA, DC_CMD_DIRB, DC_CMD_PWMA, DC_CMD_PWMB };
-  static int values[] = { 0, 0, 0, 0 };
-
-  int go = type < 0; // always go for -ve type'
-  type = abs(type);
+  static int values[] = { -1, -1, -1, -1 };
 
   int ix;
   for(ix = 0;ix < 4;ix++) {
@@ -59,13 +53,19 @@ void dc_write(byte type, byte value) {
   // Abort if ix == 4?
 
   if (values[ix] != value) {
-    go = true;
-  }  
-  if (go == true) {
     line_following.dc_write(type,value);
   }
   values[ix] = value;
 }  
+
+void dc_write_init() {
+  // all stop
+  dc_write(DC_CMD_DIRA, FW);
+  dc_write(DC_CMD_PWMA, 0);
+  dc_write(DC_CMD_DIRB, FW);
+  dc_write(DC_CMD_PWMB, 0);
+}
+
 
 void go(int lhs,int rhs,int wait) {
   int MAX_SPEED = 100;
