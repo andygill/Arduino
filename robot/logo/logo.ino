@@ -89,20 +89,21 @@ void backward(int sz) {
   go(-100,-100,sz); 
 }
 
-void loop() 
-{  
-  // flower
-  /*
-  forward(1000);
+void stop() {
+   delay(100000); 
+}
+
+void flower() {
+    forward(1000);
   go(-100,100,200);
   backward(1000);
   go(0,0,1000);
-  */
- /*
-  go(0,50,500);
-  forward(200);
-  go(60,0,100);
-  */
-  
+
+}
+
+void loop() 
+{  
+//  stop();
+  flower();  
 }
 
