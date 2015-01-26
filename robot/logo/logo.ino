@@ -90,20 +90,53 @@ void backward(int sz) {
 }
 
 void stop() {
-   delay(100000); 
+   go(0,0,0);
+}
+
+void wait() {
+  while(1) { 
+    delay(1000); // 1000 seconds 
+  }
 }
 
 void flower() {
-    forward(1000);
+  forward(1000);
   go(-100,100,200);
   backward(1000);
   go(0,0,1000);
 
 }
 
+void fb(int l,int r) {
+   go(l,r,500);
+   go(-l,-r,500);
+   stop();   
+   delay(500);
+}
+
+void left() {
+  go(-70,100,300);
+  go(0,100,300);
+  go(50,100,200);
+  go(70,100,200);
+     stop();   
+  
+}
+
+void right() {
+  go(100,-70,300);
+  go(100,0,300);
+  go(100,50,200);
+  go(100,70,200);
+     stop();   
+  
+}
+
 void loop() 
 {  
 //  stop();
-  flower();  
+//  flower();
+left(); right ();
+  delay(1000);
 }
 
