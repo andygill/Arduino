@@ -93,7 +93,7 @@ void stop() {
    go(0,0,0);
 }
 
-void wait() {
+void done() {
   while(1) { 
     delay(1000); // 1000 seconds 
   }
@@ -134,9 +134,13 @@ void right() {
 
 void loop() 
 {  
-//  stop();
-//  flower();
-left(); right ();
-  delay(1000);
+  for(int i=1;i <= 13;i++) {
+    forward(500);
+    go(-100,100,200);
+    backward(500);
+  }
+  backward(1000);
+  stop();
+  done();
 }
 
