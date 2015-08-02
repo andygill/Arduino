@@ -34,12 +34,74 @@ void loop(){   // turn the LED on (HIGH is the voltage level)
                  // wait for a second
 digitalWrite(s14,HIGH );    // turn the LED off by making the voltage LOW
 digitalWrite(s13,LOW );                // wait for a second
-digitalWrite(s9,HIGH );   // turn the LED on (HIGH is the voltage level)
-digitalWrite(s8,HIGH );  
+digitalWrite(s9,LOW );   // turn the LED on (HIGH is the voltage level)
+digitalWrite(s8,LOW);  
+digitalWrite(s7,LOW );    // turn the LED off by making the voltage LOW
+digitalWrite(s6, LOW);                                                                                                                                                                                              
+digitalWrite(s2, LOW); 
+digitalWrite(s1, LOW);                                                                                                                                                                                              
+delay(100);
+  
+digitalWrite(s14,LOW );    // turn the LED off by making the voltage LOW
+digitalWrite(s13,HIGH );                // wait for a second
+digitalWrite(s9,LOW );   // turn the LED on (HIGH is the voltage level)
+digitalWrite(s8,LOW);  
+digitalWrite(s7,LOW );    // turn the LED off by making the voltage LOW
+digitalWrite(s6, LOW);                                                                                                                                                                                              
+digitalWrite(s2, LOW); 
+digitalWrite(s1, LOW);                                                                                                                                                                                              
+delay(100);
+digitalWrite(s14,LOW );    // turn the LED off by making the voltage LOW
+digitalWrite(s13,LOW );                // wait for a second
+digitalWrite(s9,HIGH);   // turn the LED on (HIGH is the voltage level)
+digitalWrite(s8,LOW);  
+digitalWrite(s7,LOW );    // turn the LED off by making the voltage LOW
+digitalWrite(s6, LOW);                                                                                                                                                                                              
+digitalWrite(s2, LOW); 
+digitalWrite(s1, LOW);                                                                                                                                                                                              
+delay(100);
+digitalWrite(s14,LOW );    // turn the LED off by making the voltage LOW
+digitalWrite(s13,LOW );                // wait for a second
+digitalWrite(s9,LOW );   // turn the LED on (HIGH is the voltage level)
+digitalWrite(s8,HIGH);  
+digitalWrite(s7,LOW );    // turn the LED off by making the voltage LOW
+digitalWrite(s6, LOW);                                                                                                                                                                                              
+digitalWrite(s2, LOW); 
+digitalWrite(s1, LOW);                                                                                                                                                                                              
+delay(100);
+digitalWrite(s14,LOW );    // turn the LED off by making the voltage LOW
+digitalWrite(s13,LOW );                // wait for a second
+digitalWrite(s9,LOW );   // turn the LED on (HIGH is the voltage level)
+digitalWrite(s8,LOW);  
+digitalWrite(s7,HIGH);    // turn the LED off by making the voltage LOW
+digitalWrite(s6, LOW);                                                                                                                                                                                              
+digitalWrite(s2, LOW); 
+digitalWrite(s1, LOW);                                                                                                                                                                                              
+delay(100);
+digitalWrite(s14,LOW );    // turn the LED off by making the voltage LOW
+digitalWrite(s13,LOW );                // wait for a second
+digitalWrite(s9,LOW );   // turn the LED on (HIGH is the voltage level)
+digitalWrite(s8,LOW);  
 digitalWrite(s7,LOW );    // turn the LED off by making the voltage LOW
 digitalWrite(s6, HIGH);                                                                                                                                                                                              
-delay(100); 
+digitalWrite(s2, LOW); 
+digitalWrite(s1, LOW);                                                                                                                                                                                              
+delay(100);
+digitalWrite(s14,LOW );    // turn the LED off by making the voltage LOW
+digitalWrite(s13,LOW );                // wait for a second
+digitalWrite(s9,LOW );   // turn the LED on (HIGH is the voltage level)
+digitalWrite(s8,LOW);  
+digitalWrite(s7,LOW );    // turn the LED off by making the voltage LOW
 digitalWrite(s6, LOW);                                                                                                                                                                                              
-delay(500);
-  
-}
+digitalWrite(s2, HIGH); 
+digitalWrite(s1, LOW);                                                                                                                                                                                              
+delay(100);
+digitalWrite(s14,LOW );    // turn the LED off by making the voltage LOW
+digitalWrite(s13,LOW );                // wait for a second
+digitalWrite(s9,LOW );   // turn the LED on (HIGH is the voltage level)
+digitalWrite(s8,LOW);  
+digitalWrite(s7,LOW );    // turn the LED off by making the voltage LOW
+digitalWrite(s6, LOW);                                                                                                                                                                                              
+digitalWrite(s2, LOW); 
+digitalWrite(s1, HIGH);                                                                                                                                                                                              
+delay(100);}
