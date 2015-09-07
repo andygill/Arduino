@@ -8,28 +8,44 @@ char keys[4][4]={
  
 byte rowPin[4]={5,6,7,8};
 byte colPin[4]={9,10,11,12};
+
+
  
+int red = 3;
+int green = 2;
+
 Keypad keypad=Keypad(makeKeymap(keys),rowPin,colPin,4,4);
  
 void setup()
 {
  Serial.begin(9600);
 }
+
+char key() {
+ char pressed = 0;
+ while(!pressed) {
+   pressed=keypad.getKey();
+ } 
+ return pressed;
+}
  
 int w = 72;
 void loop()
 {
- char pressed=keypad.getKey();
- if(pressed)
- {
+  delay(100);
+  char pressed=key();
+  if(pressed)
+  {
+   digitalWrite(red, HIGH);
    Serial.print(pressed);
- } else {
+  } else {
+   digitalWrite(red, LOW);
    Serial.print('.');
- }
- w--;
- if (w == 0) {
+  }
+  
+  if (w == 0) {
    Serial.println("");
    w = 72;
- }
+  }
 }
 
