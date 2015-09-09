@@ -30,9 +30,31 @@ char key() {
 }
  
 int w = 72;
+int state = 0;
 void loop()
 {
   delay(100);
+  char pressed=0;
+  switch(state){
+     case 0:
+     digitalWrite(red, LOW);
+     digitalWrite(green, LOW);
+      pressed=key();
+        if (pressed == '*'){state=1;}else{state=2;}
+       break;
+     case 1:
+      digitalWrite(red, LOW);
+     digitalWrite(green, HIGH);
+     delay(1000);
+     state = 0;
+       break;  
+     case 2:digitalWrite(red,HIGH);
+     digitalWrite(green, LOW);
+     delay(500);
+     state = 0;
+        break;  
+  }
+/*
   char pressed=key();
   if(pressed)
   {
@@ -43,9 +65,20 @@ void loop()
    Serial.print('.');
   }
   
+
+  delay(100);
+  char pressed=key();
+  if(pressed)
+  {
+   digitalWrite(green, HIGH);
+   Serial.print(pressed);
+  } else {
+   digitalWrite(green, LOW);
+   Serial.print('.');
+*/  
+  
   if (w == 0) {
    Serial.println("");
    w = 72;
   }
-}
-
+  }
