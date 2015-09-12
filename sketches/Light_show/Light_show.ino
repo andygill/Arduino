@@ -4,7 +4,7 @@ int led2 = 12;      //This LED is green
 int led3 = 11;      //This LED is yellow
 int led4 = 10;      //This LED is yellow
 int led5 = 9;       //This LED is red
-int led6 = 8yt  ;       //This LED is red
+int led6 = 8;       //This LED is red
 
 
 
