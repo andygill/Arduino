@@ -40,15 +40,22 @@ void loop()
      digitalWrite(red, LOW);
      digitalWrite(green, LOW);
       pressed=key();
-        if (pressed == '*'){state=1;}else{state=2;}
+        if (pressed == '*'){state=1;}else{state=3;}
        break;
      case 1:
+      digitalWrite(red, LOW);
+     digitalWrite(green,LOW);
+      pressed=key();
+       if (pressed == '7'){state=2;}else{state=3;}
+     state = 0;
+       break; 
+     case 2:
       digitalWrite(red, LOW);
      digitalWrite(green, HIGH);
      delay(1000);
      state = 0;
-       break;  
-     case 2:digitalWrite(red,HIGH);
+       break; 
+     case 3:digitalWrite(red,HIGH);
      digitalWrite(green, LOW);
      delay(500);
      state = 0;
